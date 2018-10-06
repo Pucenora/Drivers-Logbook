@@ -1,0 +1,16 @@
+PODS:
+  - RainbowSwift (3.1.4)
+
+DEPENDENCIES:
+  - RainbowSwift (~> 3.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RainbowSwift
+
+SPEC CHECKSUMS:
+  RainbowSwift: 1cf3693f51ca408950fcd8ee7957fa5c8e269d43
+
+PODFILE CHECKSUM: 895bfec89df27878e626cb42f2a3beecbdd11ab8
+
+COCOAPODS: 1.5.3
