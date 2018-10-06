@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABF9D93BCF2CA660D53A2964 /* Pods_Fahrten_Buch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD28B691CB805706948FA55E /* Pods_Fahrten_Buch.framework */; };
 		FA0DBAAC2167E3EC00607B3B /* Snippets.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FA0DBAAB2167E3EB00607B3B /* Snippets.rtf */; };
 		FA5F91342166B672007AADB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F91332166B672007AADB2 /* AppDelegate.swift */; };
 		FA5F91362166B672007AADB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F91352166B672007AADB2 /* ViewController.swift */; };
@@ -36,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D09441F77567A7E789B9305 /* Pods-Fahrten-Buch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fahrten-Buch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fahrten-Buch/Pods-Fahrten-Buch.release.xcconfig"; sourceTree = "<group>"; };
+		528B567743A503D0937C74CF /* Pods-Fahrten-Buch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fahrten-Buch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fahrten-Buch/Pods-Fahrten-Buch.debug.xcconfig"; sourceTree = "<group>"; };
+		DD28B691CB805706948FA55E /* Pods_Fahrten_Buch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fahrten_Buch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0DBAAB2167E3EB00607B3B /* Snippets.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Snippets.rtf; sourceTree = "<group>"; };
 		FA5F91302166B672007AADB2 /* Fahrten-Buch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fahrten-Buch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5F91332166B672007AADB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF9D93BCF2CA660D53A2964 /* Pods_Fahrten_Buch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AD788256FB8B84FCE27E023 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD28B691CB805706948FA55E /* Pods_Fahrten_Buch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A075E051F7262ABFAA91025E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				528B567743A503D0937C74CF /* Pods-Fahrten-Buch.debug.xcconfig */,
+				2D09441F77567A7E789B9305 /* Pods-Fahrten-Buch.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FA5F91272166B672007AADB2 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +107,8 @@
 				FA5F914A2166B672007AADB2 /* Fahrten-BuchTests */,
 				FA5F91552166B672007AADB2 /* Fahrten-BuchUITests */,
 				FA5F91312166B672007AADB2 /* Products */,
+				A075E051F7262ABFAA91025E /* Pods */,
+				8AD788256FB8B84FCE27E023 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +162,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5F915B2166B672007AADB2 /* Build configuration list for PBXNativeTarget "Fahrten-Buch" */;
 			buildPhases = (
+				005B502DE914C8250C3B547A /* [CP] Check Pods Manifest.lock */,
 				FA5F912C2166B672007AADB2 /* Sources */,
 				FA5F912D2166B672007AADB2 /* Frameworks */,
 				FA5F912E2166B672007AADB2 /* Resources */,
@@ -263,6 +288,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		005B502DE914C8250C3B547A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fahrten-Buch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA5F912C2166B672007AADB2 /* Sources */ = {
@@ -439,6 +489,7 @@
 		};
 		FA5F915C2166B672007AADB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 528B567743A503D0937C74CF /* Pods-Fahrten-Buch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +505,7 @@
 		};
 		FA5F915D2166B672007AADB2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D09441F77567A7E789B9305 /* Pods-Fahrten-Buch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

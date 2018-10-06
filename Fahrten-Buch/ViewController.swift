@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import RainbowSwift
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -42,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if status == .notDetermined || status == .denied || status == .authorizedWhenInUse {
                 locationManager.requestAlwaysAuthorization()
             }
-            print(" \u{001B}[0;31m- Starting locationmanager..")
+            print(" - Starting locationmanager..".green)
             locationManager.startUpdatingLocation()
         }
         else{
@@ -56,7 +56,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             mapView.mapType = MKMapType(rawValue: 0)!
             mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             
-            print(" \u{001B}[0;31m- initial MKMap..")
+            print(" - initial MKMap..".green)
         }
         
         // get old coordinates
@@ -65,7 +65,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,7 +75,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let locations = coordinates.map { coordinate -> CLLocation in
             return CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         }
-        let archived = NSKeyedArchiver.archivedData(withRootObject: locations)
+        let archived = try! NSKeyedArchiver.archivedData(withRootObject: locations, requiringSecureCoding: true)
         UserDefaults.standard.set(archived, forKey: "coordinates")
         UserDefaults.standard.synchronize()
     }
@@ -84,7 +83,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // Return an array of CLLocationCoordinate2D
     func loadCoordinates() -> [CLLocationCoordinate2D]? {
         guard let archived = UserDefaults.standard.object(forKey: "coordinates") as? Data,
-            let locations = NSKeyedUnarchiver.unarchiveObject(with: archived) as? [CLLocation] else {
+            let locations = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(archived) as? [CLLocation] else{
                 return nil
         }
         
@@ -94,7 +93,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         return coordinates
     }
-
     
     // Did Update Locations?
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -133,6 +131,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    // Calculate from annotations
+    func calculateRoute(){
+        
+        // Get old Coordinates
+        if loadCoordinates() != nil{
+            coordinateArray = loadCoordinates()!
+        
+            // init array of points
+            var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+        
+            for coordinate in coordinateArray{
+                points.append(coordinate)
+            }
+            
+            // Draw Route
+            let polyline = MKPolyline(coordinates: points, count: points.count)
+            mapView.addOverlay(polyline)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.blue
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return nil
+    }
+    
     // get location history
     @IBAction func getHistory(){
         let locationHistory = loadCoordinates()
@@ -151,4 +180,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         storeCoordinates(coordinateArray)
     }
     
+    // Draw Route throug all our annotations
+    @IBAction func drawLine(){
+        calculateRoute()
+    }
 }

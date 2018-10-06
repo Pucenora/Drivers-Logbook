@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,6 +38,15 @@
                                 <state key="normal" title="Get Location History"/>
                                 <connections>
                                     <action selector="getHistory" destination="BYZ-38-t0r" eventType="touchUpInside" id="DET-Ok-BFd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBe-ca-CdQ">
+                                <rect key="frame" x="148" y="440" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97564914439999995" green="1" blue="0.97733600210000005" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Draw Route"/>
+                                <connections>
+                                    <action selector="drawLine" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiX-Di-GfV"/>
                                 </connections>
                             </button>
                         </subviews>
